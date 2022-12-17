@@ -49,7 +49,7 @@
                 	* El facet header define un encabezado y agrega un button para filtrar. Por defecto esto lo hace el solo, si quieren algo
                 	  con mayor detalle ver el showcase.
                  -->
-                <p:dataTable id="dt-years" widgetVar="dtYears" var="year"
+                <p:dataTable id="dt-years" widgetVar="dtYears" var="yearS"
                              value="#{manageYearBean.years}" reflow="true" paginator="true"
                              rows="10" paginatorPosition="bottom">
                     <f:facet name="header">
@@ -65,8 +65,8 @@
                     </f:facet>
 
 
-                    <p:column headerText="Año" sortBy="#{year.year}" filterBy="#{year.year}">
-                        <h:outputText value="#{year.year}" />
+                    <p:column headerText="Año" sortBy="#{yearS.year}" filterBy="#{yearS.year}">
+                        <h:outputText value="#{yearS.year}" />
                     </p:column>
 
 
@@ -76,14 +76,14 @@
                                          oncomplete="PF('manageYearDialog').show()"
                                          styleClass="edit-button rounded-button ui-button-success"
                                          process="@this">
-                            <f:setPropertyActionListener value="#{year}"
+                            <f:setPropertyActionListener value="#{yearS}"
                                                          target="#{manageYearBean.selectedYear}" />
                             <p:resetInput target=":form:manage-year-content" />
                         </p:commandButton>
                         <p:commandButton class="ui-button-warning rounded-button"
                                          icon="pi pi-trash" process="@this"
                                          action="#{manageYearBean.deleteYear}" >
-                            <f:setPropertyActionListener value="#{year}"
+                            <f:setPropertyActionListener value="#{yearS}"
                                                          target="#{manageYearBean.selectedYear}" />
                             <p:confirm header="Confirmar" message="Está seguro de eliminar al año?" icon="pi pi-exclamation-triangle"/>
                         </p:commandButton>

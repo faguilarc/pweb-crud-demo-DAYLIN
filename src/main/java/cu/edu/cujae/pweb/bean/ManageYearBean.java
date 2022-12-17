@@ -50,6 +50,7 @@ public class ManageYearBean {
             JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_INFO, "message_year_edited");
 
         }
+        refresh();
         PrimeFaces.current().executeScript("PF('manageYearDialog').hide()");
         PrimeFaces.current().ajax().update("form:dt-years");
 
@@ -73,7 +74,7 @@ public class ManageYearBean {
     public  void setYearDto(YearDto yearDto){this.yearDto = yearDto;}
     public YearDto getSelectedYear(){return selectedYear;}
     public void setSelectedYear(YearDto selectedYear){this.selectedYear = selectedYear;}
-    //public void refresh(){years = yearService.getYears();}
+    public void refresh(){years = yearService.getYears();}
     public List<YearDto> getYears() {
         years = yearService.getYears();
 
