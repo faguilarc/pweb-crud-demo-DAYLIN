@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="layout-sidebar">
+         <div class="layout-sidebar-filter ui-fluid ui-input-filled">
+            <h:form>
+                    <p:autoComplete placeholder="Search by name..." minQueryLength="3" effect="fade" 
+                                panelStyleClass="layout-sidebar-filter-panel" scrollHeight="300" emptyMessage="No results found!">
+                    
+                </p:autoComplete>
+            </h:form>
+        </div>
+
+        <div class="layout-menu">
+            <div class="menu-category">Administración</div>
+            <div class="menu-items">
+                <h:link outcome="/pages/security/users/user-list.xhtml">
+                    Gestionar usuarios
+                </h:link>
+            </div>
+            <div class="menu-category">Docencia</div>
+            <div class="menu-items">
+                <h:link outcome="/pages/entities/year/year-list.xhtml">
+                    Gestionar Años
+                </h:link>
+            </div>
+<!--
+            <div class="menu-category">Estudiantes</div>
+            <div class="menu-items">
+                <h:link outcome="/pages/entities/town/town-list.xhtml">
+                    Gestionar Provincias
+                </h:link>
+            </div> -->
+
+
+        </div>
+    </div>
+
+
+</ui:composition>
