@@ -62,7 +62,7 @@ public class ManageUserBean {
 	//Se ejecuta al dar clic en el button dentro del dialog para salvar o registrar al usuario
 	public void saveUser() {
 		System.out.println("Estoy insertando USUARIOOOO");
-		System.out.println();
+
         if (this.selectedUser.getId() == null) {
             this.selectedUser.setId(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
 

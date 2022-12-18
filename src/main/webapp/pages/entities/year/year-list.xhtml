@@ -48,6 +48,8 @@
                     * La propiedad rows: define la cantidad de filas
                 	* El facet header define un encabezado y agrega un button para filtrar. Por defecto esto lo hace el solo, si quieren algo
                 	  con mayor detalle ver el showcase.
+
+
                  -->
                 <p:dataTable id="dt-years" widgetVar="dtYears" var="yearS"
                              value="#{manageYearBean.years}" reflow="true" paginator="true"
@@ -66,19 +68,19 @@
 
 
                     <p:column headerText="Año" sortBy="#{yearS.year}" filterBy="#{yearS.year}">
-                        <h:outputText value="#{yearS.year}" />
+                        <h:outputText value="#{yearS.year}"/>
                     </p:column>
 
 
                     <p:column exportable="false">
                         <p:commandButton icon="pi pi-pencil" action="#{manageYearBean.OpenForEdit}"
-
+                                         update=":form:manage-year-content"
                                          oncomplete="PF('manageYearDialog').show()"
                                          styleClass="edit-button rounded-button ui-button-success"
                                          process="@this">
                             <f:setPropertyActionListener value="#{yearS}"
-                                                         target="#{manageYearBean.selectedYear}" />
-                            <p:resetInput target=":form:manage-year-content" />
+                                                         target="#{manageYearBean.selectedYear}"/>
+                            <p:resetInput target=":form:manage-year-content"/>
                         </p:commandButton>
                         <p:commandButton class="ui-button-warning rounded-button"
                                          icon="pi pi-trash" process="@this"

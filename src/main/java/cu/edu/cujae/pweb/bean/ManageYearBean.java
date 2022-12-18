@@ -50,10 +50,9 @@ public class ManageYearBean {
             JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_INFO, "message_year_edited");
 
         }
-        refresh();
         PrimeFaces.current().executeScript("PF('manageYearDialog').hide()");
+        refresh();
         PrimeFaces.current().ajax().update("form:dt-years");
-
     }
 
     //Permite eliminar un year

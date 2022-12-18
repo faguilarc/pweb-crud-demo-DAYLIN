@@ -25,7 +25,7 @@
         <f:facet name="footer">
             <p:commandButton value="Salvar" icon="pi pi-check"
                              actionListener="#{manageYearBean.saveYear}"
-                             process="manage-year-content @this" />
+                             update="manage-year-content" process="manage-year-content @this" />
            <p:commandButton value="Cancelar" icon="pi pi-times"
                              onclick="PF('manageYearDialog').hide()" class="ui-button-secondary" />
         </f:facet>

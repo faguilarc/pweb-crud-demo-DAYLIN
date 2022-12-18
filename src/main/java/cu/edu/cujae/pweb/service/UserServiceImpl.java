@@ -54,7 +54,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void createUser(UserDto user) {
-
 		restService.POST("/api/v1/users", user, String.class).getBody();
 	}
 
