@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog header="Provincia" showEffect="fade" modal="true"
+              widgetVar="manageTownDialog" responsive="true">
+        <p:outputPanel id="manage-town-content" class="ui-fluid">
+            <p:outputPanel rendered="#{not empty manageTownBean.selectedTown}">
+                <p:panelGrid layout="grid" columns="1">
+                    <h:panelGroup>
+                        <div class="p-field">
+                            <p:outputLabel for="@next">Provincia</p:outputLabel>
+                            <p:inputText id="town_name" required="true"
+                                         value="#{manageTownBean.selectedTown.town}" />
+                            <p:message for="@previous" ></p:message>
+                        </div>
+
+                    </h:panelGroup>
+
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:outputPanel>
+
+        <f:facet name="footer">
+            <p:commandButton value="Salvar" icon="pi pi-check"
+                             actionListener="#{manageTownBean.saveTown}"
+                             update="manage-town-content" process="manage-town-content @this" />
+            <p:commandButton value="Cancelar" icon="pi pi-times"
+                             onclick="PF('manageTownDialog').hide()" class="ui-button-secondary" />
+        </f:facet>
+    </p:dialog>
+</ui:composition>

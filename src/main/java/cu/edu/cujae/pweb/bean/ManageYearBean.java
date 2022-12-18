@@ -61,7 +61,6 @@ public class ManageYearBean {
             yearService.deleteYear(this.selectedYear.getId_year());
             this.selectedYear = new YearDto();
             JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_INFO, "message_year_deleted");
-            //refresh();
             PrimeFaces.current().ajax().update("form:dt-years");
             System.out.println("Estoy eliminando añoooooo");
         }catch (Exception e) {
