@@ -40,7 +40,6 @@ public class ManageYearBean {
     public void saveYear(){
         System.out.println("Estoy insertando añoooooo");
         if (this.selectedYear.getId_year() == null){
-
             this.selectedYear.setId_year(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
             yearService.createYear(this.selectedYear);
             JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_INFO, "message_year_added");

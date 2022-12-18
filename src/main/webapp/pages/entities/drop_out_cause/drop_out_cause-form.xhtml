@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog header="Causa baja" showEffect="fade" modal="true"
+              widgetVar="manageDrop_out_causeDialog" responsive="true">
+        <p:outputPanel id="manage-drop_out_cause-content" class="ui-fluid">
+            <p:outputPanel rendered="#{not empty manageDrop_out_causeBean.selectedDrop_out_cause}">
+                <p:panelGrid layout="grid" columns="1">
+                    <h:panelGroup>
+                        <div class="p-field">
+                            <p:outputLabel for="@next">Causa baja</p:outputLabel>
+                            <p:inputText id="drop_out_cause_name" required="true"
+                                         value="#{manageDrop_out_causeBean.selectedDrop_out_cause.drop_out_cause}" />
+                            <p:message for="@previous" ></p:message>
+                        </div>
+
+                    </h:panelGroup>
+
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:outputPanel>
+
+        <f:facet name="footer">
+            <p:commandButton value="Salvar" icon="pi pi-check"
+                             actionListener="#{manageDrop_out_causeBean.saveDrop_out_cause}"
+                             update="manage-drop_out_cause-content" process="manage-drop_out_cause-content @this" />
+            <p:commandButton value="Cancelar" icon="pi pi-times"
+                             onclick="PF('manageDrop_out_causeDialog').hide()" class="ui-button-secondary" />
+        </f:facet>
+    </p:dialog>
+</ui:composition>
