@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog header="Grupo" showEffect="fade" modal="true"
+              widgetVar="manageGroupsDialog" responsive="true">
+        <p:outputPanel id="manage-groups-content" class="ui-fluid">
+            <p:outputPanel rendered="#{not empty manageGroupsBean.selectedGroups}">
+                <p:panelGrid layout="grid" columns="1">
+                    <h:panelGroup>
+                        <div class="p-field">
+                            <p:outputLabel for="@next">Grupo</p:outputLabel>
+                            <p:inputText id="groups_name" required="true"
+                                         value="#{manageGroupsBean.selectedGroups.group_name}" />
+                            <p:message for="@previous" ></p:message>
+                        </div>
+                        <div class="p-field">
+                            <p:outputLabel for="@next" rendered="#{empty manageGroupsBean.selectedGroups.id_group}">Años</p:outputLabel>
+                            <p:selectOneMenu id="multiple" required="true"
+                                                  value="#{manageGroupsBean.selectedYear}" label="Seleccione"
+                                                  style="min-width: 15rem"  filter="true"
+                                                  filterMatchMode="startsWith" panelStyle="width: 30rem"
+                                                  scrollHeight="250" rendered="#{empty manageGroupsBean.selectedGroups.id_group}">
+                                <f:selectItems value="#{manageGroupsBean.yearDtoList}" var="year"
+                                               itemLabel="#{year.year}" itemValue="#{year.id_year}" />
+                            </p:selectOneMenu>
+                        </div>
+                    </h:panelGroup>
+
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:outputPanel>
+
+        <f:facet name="footer">
+            <p:commandButton value="Salvar" icon="pi pi-check"
+                             actionListener="#{manageGroupsBean.saveGroups}"
+                             update="manage-groups-content" process="manage-groups-content @this" />
+            <p:commandButton value="Cancelar" icon="pi pi-times"
+                             onclick="PF('manageGroupsDialog').hide()" class="ui-button-secondary" />
+        </f:facet>
+    </p:dialog>
+</ui:composition>
