@@ -48,14 +48,14 @@ public class ManageUserBean {
 	
 	//Se ejecuta al dar clic en el button Nuevo
 	public void openNew() {
-        this.selectedUser = new UserDto();
+        this.userDto = new UserDto();
         this.selectedRoles = null;
     }
 	
 	//Se ejecuta al dar clic en el button con el lapicito
 	public void openForEdit() {
 		List<RoleDto> roles = this.selectedUser.getRoles();
-
+		this.selectedRoles = roles.stream().map(r -> r.getId()).toArray(Long[]::new);
 	}
 	
 	//Se ejecuta al dar clic en el button dentro del dialog para salvar o registrar al usuario

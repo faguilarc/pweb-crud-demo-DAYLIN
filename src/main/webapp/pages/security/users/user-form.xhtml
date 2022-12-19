@@ -49,25 +49,24 @@
 								value="#{manageUserBean.selectedRoles}" label="Seleccione"
 								style="min-width: 15rem" multiple="true" filter="true"
 								filterMatchMode="startsWith" panelStyle="width: 30rem"
-								scrollHeight="250" rendered="#{empty manageUserBean.selectedUser.id}">
+								scrollHeight="250" >
 								<f:selectItems value="#{manageUserBean.roles}" var="role"
 									itemLabel="#{role.description}" itemValue="#{role.id}" />
 							</p:selectCheckboxMenu>
 						</div>
 						<div class="p-field">
-							<p:outputLabel for="@next" rendered="#{empty manageUserBean.selectedUser.id}">Contraseña</p:outputLabel>
+							<p:outputLabel for="@next" >Contraseña</p:outputLabel>
 							<p:password id="password1" required="true"
-								rendered="#{empty manageUserBean.selectedUser.id}"
 								value="#{manageUserBean.selectedUser.password}"
 								match="password2">
 							</p:password>
 							<p:message for="@previous" rendered="#{empty manageUserBean.selectedUser.id}"></p:message>
 						</div>
 						<div class="p-field">
-							<p:outputLabel for="@next" rendered="#{empty manageUserBean.selectedUser.id}">Repetir contraseña</p:outputLabel>
+							<p:outputLabel for="@next" >Repetir contraseña</p:outputLabel>
 							<p:password id="password2" required="true"
 								value="#{manageUserBean.selectedUser.password}"
-								rendered="#{empty manageUserBean.selectedUser.id}">
+								>
 							</p:password>
 							<p:message for="@previous" rendered="#{empty manageUserBean.selectedUser.id}"></p:message>
 						</div>

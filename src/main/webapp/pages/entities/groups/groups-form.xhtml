@@ -22,7 +22,7 @@
                                                   value="#{manageGroupsBean.selectedYear}" label="Seleccione"
                                                   style="min-width: 15rem"  filter="true"
                                                   filterMatchMode="startsWith" panelStyle="width: 30rem"
-                                                  scrollHeight="250" rendered="#{empty manageGroupsBean.selectedGroups.id_group}">
+                                                  scrollHeight="250" >
                                 <f:selectItems value="#{manageGroupsBean.yearDtoList}" var="year"
                                                itemLabel="#{year.year}" itemValue="#{year.id_year}" />
                             </p:selectOneMenu>

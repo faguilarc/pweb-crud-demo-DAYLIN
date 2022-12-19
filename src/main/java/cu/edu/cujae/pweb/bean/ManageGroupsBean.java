@@ -24,16 +24,17 @@ public class ManageGroupsBean {
     private List<GroupsDto> groupsDtoList;
     private String selectedYear;
 
-private List<YearDto> yearDtoList;
+    private List<YearDto> yearDtoList;
 
     @Autowired
     private YearService yearService;
     @Autowired
     private GroupsService groupsService;
 
-    public ManageGroupsBean(){}
+    public ManageGroupsBean() {
+    }
 
-    public void openNew(){
+    public void openNew() {
         this.selectedGroups = new GroupsDto();
 
     }
