@@ -9,24 +9,16 @@
 	<!-- Panel Edit y New -->
 	<p:dialog header="Curso" showEffect="fade" modal="true"
 		widgetVar="manageCourseDialog" responsive="true">
-
 		<p:outputPanel id="manage-course-content" class="ui-fluid">
-
 			<p:outputPanel rendered="#{not empty manageCourseBean.courseDto}">
-
 				<p:panelGrid layout="grid" columns="1">
-
 					<h:panelGroup>
-
 						<div class="p-field">
 							<p:outputLabel for="@next">Curso</p:outputLabel>
 							<p:inputText type="text" id="nombre" required="true"
 								value="#{manageCourseBean.courseDto.course}" placeholder="Ej. 2022-2023" maxlength="9" />
-
 							<p:message for="@previous"></p:message>
 						</div>
-
-						<div class="p-formgrid p-grid">
 							<div class="p-field p-col">
 								<p:outputLabel for="@next">Fecha de Inicio</p:outputLabel>
 								<p:datePicker id="inicio" required="true"
@@ -42,7 +34,6 @@
 									pattern="dd/MM/yyyy" />
 								<p:message for="@previous"></p:message>
 							</div>
-						</div>
 					</h:panelGroup>
 
 

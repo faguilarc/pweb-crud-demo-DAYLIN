@@ -1,6 +1,7 @@
 package cu.edu.cujae.pweb.service;
 
 import cu.edu.cujae.pweb.dto.StudentDto;
+import cu.edu.cujae.pweb.dto.SubjectDto;
 import cu.edu.cujae.pweb.utils.ApiRestMapper;
 import cu.edu.cujae.pweb.utils.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,59 +15,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StudentServiceImpl implements StudentService{
-
+public class SubjectServiceImpl implements SubjectService{
     @Autowired
     private RestService restService;
 
     @Override
-    public List<StudentDto> getStudent() {
-        List<StudentDto> studentDtoList = new ArrayList<StudentDto>();
+    public List<SubjectDto> getSubject() {
+        List<SubjectDto> subjectDtoList = new ArrayList<SubjectDto>();
         try {
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-            ApiRestMapper<StudentDto> apiRestMapper = new ApiRestMapper<>();
-            String response = (String) restService.GET("/api/v1/student", params, String.class).getBody();
-            studentDtoList = apiRestMapper.mapList(response, StudentDto.class);
+            ApiRestMapper<SubjectDto> apiRestMapper = new ApiRestMapper<>();
+            String response = (String) restService.GET("/api/v1/subject", params, String.class).getBody();
+            subjectDtoList = apiRestMapper.mapList(response, SubjectDto.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return studentDtoList;
+        return subjectDtoList;
     }
 
     @Override
-    public StudentDto getStudentById(String id) {
-        StudentDto studentDto = null;
+    public SubjectDto getSubjectById(String id) {
+        SubjectDto subjectDto = null;
 
         try {
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-            ApiRestMapper<StudentDto> apiRestMapper = new ApiRestMapper<>();
+            ApiRestMapper<SubjectDto> apiRestMapper = new ApiRestMapper<>();
 
-            UriTemplate template = new UriTemplate("/api/v1/student/{id}");
+            UriTemplate template = new UriTemplate("/api/v1/subject/{id}");
             String uri = template.expand(id).toString();
             String response = (String)restService.GET(uri, params, String.class).getBody();
-            studentDto = apiRestMapper.mapOne(response, StudentDto.class);
+            subjectDto = apiRestMapper.mapOne(response, SubjectDto.class);
         }catch (Exception e){
             // TODO: handle exception
         }
-        return studentDto;
+        return subjectDto;
     }
 
     @Override
-    public void createStudent(StudentDto student) {
-        restService.POST("/api/v1/student", student, String.class).getBody();
+    public void createSubject(SubjectDto subject) {
+        restService.POST("/api/v1/subject", subject, String.class).getBody();
+
     }
 
     @Override
-    public void updateStudent(StudentDto student) {
+    public void updateSubject(SubjectDto subject) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        restService.PUT("/api/v1/student", params, student, String.class).getBody();
+        restService.PUT("/api/v1/subject", params, subject, String.class).getBody();
+
     }
 
     @Override
-    public void deleteStudent(String id) {
+    public void deleteSubject(String id) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        UriTemplate template = new UriTemplate("/api/v1/student/{id}");
+        UriTemplate template = new UriTemplate("/api/v1/subject/{id}");
         String uri = template.expand(id).toString();
         restService.DELETE(uri, params, String.class, null).getBody();
+
     }
 }
