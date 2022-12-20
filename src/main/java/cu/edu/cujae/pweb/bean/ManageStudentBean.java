@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.event.ActionListener;
 import javax.faces.view.ViewScoped;
 import java.util.ArrayList;
 import java.util.List;

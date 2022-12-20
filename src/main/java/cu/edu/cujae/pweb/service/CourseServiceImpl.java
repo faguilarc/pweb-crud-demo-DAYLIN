@@ -21,7 +21,7 @@ public class CourseServiceImpl implements CourseService{
     private RestService restService;
 
     @Override
-    public List<CourseDto> listCourse() throws SQLException {
+    public List<CourseDto> listCourse() {
         List<CourseDto> courseList = new ArrayList<CourseDto>();
 
         try {
@@ -37,18 +37,18 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void createCourse(CourseDto courseDto) throws SQLException {
+    public void createCourse(CourseDto courseDto) {
         restService.POST("/api/v1/courses", courseDto, String.class).getBody();
     }
 
     @Override
-    public void updateCourse(CourseDto courseDto) throws SQLException {
+    public void updateCourse(CourseDto courseDto)  {
         MultiValueMap<String,String> params = new LinkedMultiValueMap<>();
         restService.PUT("/api/v1/courses",params, courseDto, String.class).getBody();
     }
 
     @Override
-    public void deleteCourse(String id) throws SQLException {
+    public void deleteCourse(String id)  {
         MultiValueMap<String,String> params = new LinkedMultiValueMap<>();
         UriTemplate template = new UriTemplate("/api/v1/courses/{id}");
         String uri = template.expand(id).toString();
@@ -56,7 +56,7 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public CourseDto getCourseById(String id) throws SQLException {
+    public CourseDto getCourseById(String id)  {
         CourseDto courseDto = null;
         try {
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>();

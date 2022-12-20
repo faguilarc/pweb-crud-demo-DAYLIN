@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog header="Semestre" showEffect="fade" modal="true"
+			  widgetVar="manageSemesterDialog" responsive="true">
+		<p:outputPanel id="manage-semester-content" class="ui-fluid">
+			<p:outputPanel rendered="#{not empty manageSemesterBean.selectedSemester}">
+				<p:panelGrid layout="grid" columns="1">
+					<h:panelGroup>
+						<div class="p-field">
+							<p:outputLabel for="@next">Semestre</p:outputLabel>
+							<p:inputText id="student_name" required="true"
+										 value="#{manageSemesterBean.selectedSemester.semester}" />
+							<p:message for="@previous" ></p:message>
+						</div>
+
+						<div class="p-field">
+							<p:outputLabel for="@next">Años</p:outputLabel>
+							<p:selectOneMenu id="multipleYear" required="true"
+											 value="#{manageSemesterBean.selectedYear}" label="Seleccione"
+											 style="min-width: 15rem"  filter="true"
+											 filterMatchMode="startsWith" panelStyle="width: 30rem"
+											 scrollHeight="250" >
+								<f:selectItems value="#{manageSemesterBean.yearDtoList}" var="year"
+											   itemLabel="#{year.year}" itemValue="#{year.id_year}" />
+							</p:selectOneMenu>
+						</div>
+
+						<div class="p-field">
+							<p:outputLabel for="@next" >Cursos</p:outputLabel>
+							<p:selectOneMenu id="multipleCurso" required="true"
+											 value="#{manageSemesterBean.selectedCourse}" label="Seleccione"
+											 style="min-width: 15rem"  filter="true"
+											 filterMatchMode="startsWith" panelStyle="width: 30rem"
+											 scrollHeight="250" >
+								<f:selectItems value="#{manageSemesterBean.courseDtoList}" var="course"
+											   itemLabel="#{course.course}" itemValue="#{course.idCourse}" />
+							</p:selectOneMenu>
+						</div>
+					</h:panelGroup>
+
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:outputPanel>
+
+		<f:facet name="footer">
+			<p:commandButton value="Salvar" icon="pi pi-check"
+							 actionListener="#{manageSemesterBean.saveSemester}"
+							 update="manage-semester-content" process="manage-semester-content @this" />
+			<p:commandButton value="Cancelar" icon="pi pi-times"
+							 onclick="PF('manageSemesterDialog').hide()" class="ui-button-secondary" />
+		</f:facet>
+	</p:dialog>
+</ui:composition>
