@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface StudentHistoryService {
 
-    void createStudentHistory(StudentHistoryDto studentHistoryDto) throws SQLException;
+    void createStudentHistory(StudentHistoryDto studentHistoryDto) ;
 
-    void updateStudentHistory(StudentHistoryDto studentHistoryDto) throws SQLException;
+    void updateStudentHistory(StudentHistoryDto studentHistoryDto) ;
 
-    List<StudentHistoryDto> listStudentHistory() throws SQLException;
+    List<StudentHistoryDto> listStudentHistory() ;
 
-    StudentHistoryDto getStudentHistoryById(String id) throws SQLException;
+    StudentHistoryDto getStudentHistoryById(String id) ;
 
-    void deleteStudentHistory(String  id) throws SQLException;
+    void deleteStudentHistory(String  id) ;
 
-    List<StudentHistoryDto> AssignNumberList() throws SQLException;
+    List<StudentHistoryDto> AssignNumberList() ;
 
 
 

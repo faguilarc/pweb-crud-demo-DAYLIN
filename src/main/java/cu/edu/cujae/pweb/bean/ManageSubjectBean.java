@@ -1,6 +1,5 @@
 package cu.edu.cujae.pweb.bean;
 
-import cu.edu.cujae.pweb.dto.GroupsDto;
 import cu.edu.cujae.pweb.dto.SemesterDto;
 import cu.edu.cujae.pweb.dto.SubjectDto;
 import cu.edu.cujae.pweb.service.SemesterService;
@@ -42,7 +41,7 @@ public class ManageSubjectBean {
         this.selectedSubject = new SubjectDto();
     }
 
-    public void saveSemester() {
+    public void saveSubject() {
         if (this.selectedSubject.getId_subject() == null) {
             this.selectedSubject.setId_subject(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
 

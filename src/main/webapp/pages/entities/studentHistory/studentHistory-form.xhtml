@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog header="Registro" showEffect="fade" modal="true"
+              widgetVar="manageStudentHistoryDialog" responsive="true">
+        <p:outputPanel id="manage-studentHistory-content" class="ui-fluid">
+            <p:outputPanel rendered="#{not empty manageStudentHistoryBean.studentHistoryDto}">
+                <p:panelGrid layout="grid" columns="1">
+                    <h:panelGroup>
+                        <div class="p-field">
+                            <p:outputLabel for="@next" >Cursos</p:outputLabel>
+                            <p:selectOneMenu id="studentHistoryCourse" required="true"
+                                             value="#{manageStudentHistoryBean.idCourse}" label="Seleccione"
+                                             style="min-width: 15rem"  filter="true"
+                                             filterMatchMode="startsWith" panelStyle="width: 30rem"
+                                             scrollHeight="250" >
+                                <f:selectItems value="#{manageStudentHistoryBean.courseDtoList}" var="course"
+                                               itemLabel="#{course.course}" itemValue="#{course.idCourse}" />
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="p-field">
+                            <p:outputLabel for="@next" >Grupos</p:outputLabel>
+                            <p:selectOneMenu id="studentHistoryGroups" required="true"
+                                             value="#{manageStudentHistoryBean.idGroup}" label="Seleccione"
+                                             style="min-width: 15rem"  filter="true"
+                                             filterMatchMode="startsWith" panelStyle="width: 30rem"
+                                             scrollHeight="250" >
+                                <f:selectItems value="#{manageStudentHistoryBean.groupsDtoList}" var="groups"
+                                               itemLabel="#{groups.group_name}" itemValue="#{groups.id_group}" />
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="p-field">
+                            <p:outputLabel for="@next" rendered="#{empty manageStudentHistoryBean.studentHistoryDto.idStudentHistory}">Estudiantes</p:outputLabel>
+                            <p:selectOneMenu id="studentHistoryStudent" required="true"
+                                             value="#{manageStudentHistoryBean.idStudent}" label="Seleccione"
+                                             style="min-width: 15rem"  filter="true"
+                                             filterMatchMode="startsWith" panelStyle="width: 30rem"
+                                             scrollHeight="250" rendered="#{empty manageStudentHistoryBean.studentHistoryDto.idStudentHistory}">
+                                <f:selectItems value="#{manageStudentHistoryBean.studentDtoList}" var="student"
+                                               itemLabel="#{student.nameFull}" itemValue="#{student.id_student}" />
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="p-field">
+                            <p:outputLabel for="@next">Número de lista</p:outputLabel>
+                            <p:inputText id="numberList" required="true"
+                                         value="#{manageStudentHistoryBean.studentHistoryDto.numList}"
+                                         maxlength="2">
+                                <p:keyFilter mask="num" />
+                            </p:inputText>
+                            <p:message for="@previous"></p:message>
+                        </div>
+
+                    </h:panelGroup>
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:outputPanel>
+
+        <f:facet name="footer">
+            <p:commandButton value="Salvar" icon="pi pi-check"
+                             actionListener="#{manageStudentHistoryBean.saveStudentHistory}"
+                             update="manage-studentHistory-content" process="manage-studentHistory-content @this" />
+            <p:commandButton value="Cancelar" icon="pi pi-times"
+                             onclick="PF('manageStudentHistoryDialog').hide()" class="ui-button-secondary" />
+        </f:facet>
+    </p:dialog>
+</ui:composition>

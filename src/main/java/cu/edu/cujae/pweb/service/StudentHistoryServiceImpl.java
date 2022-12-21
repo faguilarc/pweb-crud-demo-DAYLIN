@@ -1,7 +1,6 @@
 package cu.edu.cujae.pweb.service;
 
 import cu.edu.cujae.pweb.dto.StudentHistoryDto;
-import cu.edu.cujae.pweb.dto.UserDto;
 import cu.edu.cujae.pweb.utils.ApiRestMapper;
 import cu.edu.cujae.pweb.utils.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +21,19 @@ public class StudentHistoryServiceImpl implements StudentHistoryService{
     RestService restService;
 
     @Override
-    public void createStudentHistory(StudentHistoryDto studentHistoryDto) throws SQLException {
+    public void createStudentHistory(StudentHistoryDto studentHistoryDto) {
         restService.POST("/api/v1/studenthistory", studentHistoryDto, String.class).getBody();
     }
 
     @Override
-    public void updateStudentHistory(StudentHistoryDto studentHistoryDto) throws SQLException {
+    public void updateStudentHistory(StudentHistoryDto studentHistoryDto)  {
         MultiValueMap<String,String> params = new LinkedMultiValueMap<>();
         restService.PUT("/api/v1/studenthistory",params, studentHistoryDto, String.class).getBody();
 
     }
 
     @Override
-    public List<StudentHistoryDto> listStudentHistory() throws SQLException {
+    public List<StudentHistoryDto> listStudentHistory()  {
         List<StudentHistoryDto> historyDtos = new ArrayList<StudentHistoryDto>();
         try {
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -48,7 +47,7 @@ public class StudentHistoryServiceImpl implements StudentHistoryService{
     }
 
     @Override
-    public StudentHistoryDto getStudentHistoryById(String id) throws SQLException {
+    public StudentHistoryDto getStudentHistoryById(String id) {
         StudentHistoryDto historyDto = null;
 
         try {
@@ -66,12 +65,15 @@ public class StudentHistoryServiceImpl implements StudentHistoryService{
     }
 
     @Override
-    public void deleteStudentHistory(String id) throws SQLException {
-        restService.POST("/api/v1/studenthistory", id, String.class).getBody();
+    public void deleteStudentHistory(String id) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        UriTemplate template = new UriTemplate("/api/v1/studenthistory/{id}");
+        String uri = template.expand(id).toString();
+        restService.DELETE(uri, params, String.class, null).getBody();
     }
 
     @Override
-    public List<StudentHistoryDto> AssignNumberList() throws SQLException {
+    public List<StudentHistoryDto> AssignNumberList()  {
         return null;
     }
 }

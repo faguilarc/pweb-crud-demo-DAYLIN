@@ -12,25 +12,27 @@
                     <h:panelGroup>
                         <div class="p-field">
                             <p:outputLabel for="@next">Asignatura</p:outputLabel>
-                            <p:inputText id="subject" required="true"
+                            <p:inputText id="name" required="true"
                                          value="#{manageSubjectBean.selectedSubject.subject}" />
                             <p:message for="@previous" ></p:message>
                         </div>
+
                         <div class="p-field">
-                            <p:outputLabel for="@next" rendered="#{empty manageSubjectBean.selectedSubject.subject}">Semestres</p:outputLabel>
+                            <p:outputLabel for="@next" rendered="#{empty manageSubjectBean.selectedSubject.id_subject}">Semestre</p:outputLabel>
                             <p:selectOneMenu id="multiple" required="true"
                                                   value="#{manageSubjectBean.selectedSemester}" label="Seleccione"
-                                                  style="min-width: 15rem"  filter="true"
+                                                  style="min-width: 15rem" multiple="true" filter="true"
                                                   filterMatchMode="startsWith" panelStyle="width: 30rem"
                                                   scrollHeight="250" >
                                 <f:selectItems value="#{manageSubjectBean.semesterDtoList}" var="semester"
                                                itemLabel="#{semester.semester}" itemValue="#{semester.id_semester}" />
                             </p:selectOneMenu>
                         </div>
+
                         <div class="p-field">
-                            <p:outputLabel for="@next">Horas Clase</p:outputLabel>
-                            <p:inputNumber id="hours" required="true"
-                                         value="#{manageSubjectBean.selectedSubject.hour}" minValue="1" decimalPlaces="0"/>
+                            <p:outputLabel for="@next">Horas</p:outputLabel>
+                            <p:inputText id="hora" required="true"
+                                         value="#{manageSubjectBean.selectedSubject.hour}" />
                             <p:message for="@previous" ></p:message>
                         </div>
                     </h:panelGroup>
@@ -41,7 +43,7 @@
 
         <f:facet name="footer">
             <p:commandButton value="Salvar" icon="pi pi-check"
-                             actionListener="#{manageSubjectBean.saveSemester}"
+                             actionListener="#{manageSubjectBean.saveSubject}"
                              update="manage-subject-content" process="manage-subject-content @this" />
             <p:commandButton value="Cancelar" icon="pi pi-times"
                              onclick="PF('manageSubjectDialog').hide()" class="ui-button-secondary" />
